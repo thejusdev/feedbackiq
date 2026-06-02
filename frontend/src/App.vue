@@ -37,7 +37,8 @@ async function handleSubmit(feedbacks) {
   error.value = null
 
   try {
-    const res = await axios.post('http://localhost:3000/api/feedback/analyze', {
+    const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+    const res = await axios.post(`${BASE_URL}/api/feedback/analyze`, {
       feedbacks: filtered
     })
     result.value = res.data.data
